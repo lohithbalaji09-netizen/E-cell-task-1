@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png" />
+  <title>Frontend Mentor | News homepage</title>
+
+  <!-- Google Fonts: Inter (400, 700, 800) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page-container">
+    <!-- Header / Navigation -->
+    <header class="site-header">
+      <a href="#" class="logo" aria-label="W. Homepage">
+        <img src="./assets/images/logo.svg" alt="W. Logo" width="65" height="40" />
+      </a>
+
+      <!-- Mobile Menu Toggle Button -->
+      <button 
+        class="menu-toggle" 
+        id="menuOpenBtn" 
+        aria-label="Open navigation menu" 
+        aria-expanded="false" 
+        aria-controls="navMenu"
+      >
+        <img src="./assets/images/icon-menu.svg" alt="" width="40" height="17" />
+      </button>
+
+      <!-- Navigation Drawer / Links -->
+      <nav class="nav-menu" id="navMenu" aria-label="Main Navigation">
+        <button 
+          class="menu-close" 
+          id="menuCloseBtn" 
+          aria-label="Close navigation menu"
+        >
+          <img src="./assets/images/icon-menu-close.svg" alt="" width="32" height="31" />
+        </button>
+
+        <ul class="nav-list">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#new">New</a></li>
+          <li><a href="#popular">Popular</a></li>
+          <li><a href="#trending">Trending</a></li>
+          <li><a href="#categories">Categories</a></li>
+        </ul>
+      </nav>
+
+      <!-- Dark backdrop overlay for mobile drawer -->
+      <div class="menu-overlay" id="menuOverlay" aria-hidden="true"></div>
+    </header>
+
+    <!-- Main Content Grid -->
+    <main class="main-content">
+      <div class="top-section">
+        <!-- Hero Featured Article -->
+        <article class="hero-article">
+          <picture class="hero-image">
+            <source media="(min-width: 768px)" srcset="./assets/images/image-web-3-desktop.jpg" />
+            <img 
+              src="./assets/images/image-web-3-mobile.jpg" 
+              alt="Colorful geometric shapes illustrating Web 3.0" 
+              width="730" 
+              height="300" 
+            />
+          </picture>
+
+          <div class="hero-details">
+            <h1 class="hero-title">The Bright Future of Web 3.0?</h1>
+            <div class="hero-copy">
+              <p>
+                We dive into the next evolution of the web that claims to put the power of the platforms back into the hands of the people. But is it really fulfilling its promise?
+              </p>
+              <a href="#read-more" class="btn-cta">Read more</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- "New" Sidebar -->
+        <aside class="sidebar-new" id="new" aria-labelledby="new-heading">
+          <h2 id="new-heading" class="sidebar-title">New</h2>
+
+          <div class="new-articles">
+            <article class="new-item">
+              <h3><a href="#">Hydrogen VS Electric Cars</a></h3>
+              <p>Will hydrogen-fueled cars ever catch up to EVs?</p>
+            </article>
+
+            <article class="new-item">
+              <h3><a href="#">The Downsides of AI Artistry</a></h3>
+              <p>What are the possible adverse effects of on-demand AI image generation?</p>
+            </article>
+
+            <article class="new-item">
+              <h3><a href="#">Is VC Funding Drying Up?</a></h3>
+              <p>Private funding by VC firms is down 50% YOY. We take a look at what that means.</p>
+            </article>
+          </div>
+        </aside>
+      </div>
+
+      <!-- Numbered Trending Cards (01, 02, 03) -->
+      <section class="trending-section" id="trending" aria-label="Trending Stories">
+        <article class="card">
+          <img src="./assets/images/image-retro-pcs.jpg" alt="Retro PC monitor and keyboard" class="card-img" width="100" height="130" />
+          <div class="card-content">
+            <span class="card-number">01</span>
+            <h3 class="card-title"><a href="#">Reviving Retro PCs</a></h3>
+            <p class="card-desc">What happens when old PCs are given modern upgrades?</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="./assets/images/image-top-laptops.jpg" alt="Red backlit laptop keyboard" class="card-img" width="100" height="130" />
+          <div class="card-content">
+            <span class="card-number">02</span>
+            <h3 class="card-title"><a href="#">Top 10 Laptops of 2022</a></h3>
+            <p class="card-desc">Our best picks for various needs and budgets.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="./assets/images/image-gaming-growth.jpg" alt="White gaming controller levitating over hand" class="card-img" width="100" height="130" />
+          <div class="card-content">
+            <span class="card-number">03</span>
+            <h3 class="card-title"><a href="#">The Growth of Gaming</a></h3>
+            <p class="card-desc">How the pandemic has sparked fresh opportunities.</p>
+          </div>
+        </article>
+      </section>
+    </main>
+
+   
+  <!-- Accessible JavaScript for Mobile Navigation -->
+  <script>
+    const menuOpenBtn = document.getElementById('menuOpenBtn');
+    const menuCloseBtn = document.getElementById('menuCloseBtn');
+    const navMenu = document.getElementById('navMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+
+    function openMenu() {
+      navMenu.classList.add('is-open');
+      menuOverlay.classList.add('is-open');
+      menuOpenBtn.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+      menuCloseBtn.focus();
+    }
+
+    function closeMenu() {
+      navMenu.classList.remove('is-open');
+      menuOverlay.classList.remove('is-open');
+      menuOpenBtn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      menuOpenBtn.focus();
+    }
+
+    menuOpenBtn.addEventListener('click', openMenu);
+    menuCloseBtn.addEventListener('click', closeMenu);
+    menuOverlay.addEventListener('click', closeMenu);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navMenu.classList.contains('is-open')) {
+        closeMenu();
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,442 @@
+/* ==========================================================
+   CSS Custom Properties (Variables from Frontend Mentor Style Guide)
+   ========================================================== */
+:root {
+  /* Primary Colors */
+  --clr-soft-orange: hsl(35, 77%, 62%);
+  --clr-soft-red: hsl(5, 85%, 63%);
+
+  /* Neutral Colors */
+  --clr-off-white: hsl(36, 100%, 99%);
+  --clr-grayish-blue: hsl(233, 8%, 79%);
+  --clr-dark-grayish-blue: hsl(236, 13%, 42%);
+  --clr-very-dark-blue: hsl(240, 100%, 5%);
+
+  /* Typography */
+  --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  --fs-body: 15px;
+  --fw-regular: 400;
+  --fw-bold: 700;
+  --fw-extra-bold: 800;
+}
+
+/* ==========================================================
+   Base Reset
+   ========================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-regular);
+  color: var(--clr-dark-grayish-blue);
+  background-color: var(--clr-off-white);
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, picture {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* Page Layout Container */
+.page-container {
+  max-width: 1110px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+@media (min-width: 768px) {
+  .page-container {
+    padding: 3.5rem 1.5rem 5rem;
+  }
+}
+
+/* ==========================================================
+   Header & Navigation
+   ========================================================== */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .site-header {
+    margin-bottom: 3.5rem;
+  }
+}
+
+.logo img {
+  height: 28px;
+  width: auto;
+}
+
+@media (min-width: 768px) {
+  .logo img {
+    height: 40px;
+  }
+}
+
+.menu-toggle {
+  display: block;
+}
+
+.menu-close {
+  display: block;
+  margin-left: auto;
+  margin-bottom: 5rem;
+}
+
+/* Mobile Slide-Out Drawer */
+.nav-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 68vw;
+  max-width: 320px;
+  background-color: var(--clr-off-white);
+  padding: 2rem 1.5rem;
+  z-index: 100;
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.15);
+}
+
+.nav-menu.is-open {
+  transform: translateX(0);
+}
+
+.nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.nav-list a {
+  color: var(--clr-very-dark-blue);
+  font-size: 1.125rem;
+  font-weight: var(--fw-regular);
+  transition: color 0.2s ease;
+}
+
+.nav-list a:hover,
+.nav-list a:focus-visible {
+  color: var(--clr-soft-red);
+}
+
+.menu-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 26, 0.5);
+  z-index: 90;
+}
+
+.menu-overlay.is-open {
+  display: block;
+}
+
+/* Desktop Navigation */
+@media (min-width: 768px) {
+  .menu-toggle,
+  .menu-close,
+  .menu-overlay {
+    display: none !important;
+  }
+
+  .nav-menu {
+    position: static;
+    width: auto;
+    max-width: none;
+    padding: 0;
+    box-shadow: none;
+    transform: none;
+  }
+
+  .nav-list {
+    flex-direction: row;
+    gap: 2.5rem;
+  }
+
+  .nav-list a {
+    color: var(--clr-dark-grayish-blue);
+    font-size: 0.9375rem;
+  }
+}
+
+/* ==========================================================
+   Top Grid Section (Hero Article + New Sidebar)
+   ========================================================== */
+.top-section {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+@media (min-width: 1024px) {
+  .top-section {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    align-items: stretch;
+  }
+}
+
+/* Hero Article */
+.hero-article {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-image img {
+  width: 100%;
+  object-fit: cover;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .hero-image img {
+    margin-bottom: 2rem;
+  }
+}
+
+.hero-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .hero-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+}
+
+.hero-title {
+  color: var(--clr-very-dark-blue);
+  font-size: 2.5rem;
+  font-weight: var(--fw-extra-bold);
+  line-height: 1.05;
+  letter-spacing: -0.5px;
+}
+
+@media (min-width: 1024px) {
+  .hero-title {
+    font-size: 3.5rem;
+  }
+}
+
+.hero-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.hero-copy p {
+  color: var(--clr-dark-grayish-blue);
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+
+/* CTA Button with Active/Hover State */
+.btn-cta {
+  display: inline-block;
+  background-color: var(--clr-soft-red);
+  color: var(--clr-very-dark-blue);
+  padding: 0.9rem 2.25rem;
+  font-size: 0.875rem;
+  font-weight: var(--fw-extra-bold);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-cta:hover,
+.btn-cta:focus-visible {
+  background-color: var(--clr-very-dark-blue);
+  color: var(--clr-off-white);
+}
+
+/* ==========================================================
+   Sidebar "New" Container
+   ========================================================== */
+.sidebar-new {
+  background-color: var(--clr-very-dark-blue);
+  padding: 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@media (min-width: 1024px) {
+  .sidebar-new {
+    padding: 2rem 1.5rem;
+  }
+}
+
+.sidebar-title {
+  color: var(--clr-soft-orange);
+  font-size: 2rem;
+  font-weight: var(--fw-bold);
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .sidebar-title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+}
+
+.new-articles {
+  display: flex;
+  flex-direction: column;
+}
+
+.new-item {
+  padding: 1.75rem 0;
+  border-bottom: 1px solid rgba(197, 198, 206, 0.25);
+}
+
+.new-item:first-child {
+  padding-top: 0;
+}
+
+.new-item:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.new-item h3 a {
+  color: var(--clr-off-white);
+  font-size: 1.25rem;
+  font-weight: var(--fw-bold);
+  transition: color 0.2s ease;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+.new-item h3 a:hover,
+.new-item h3 a:focus-visible {
+  color: var(--clr-soft-orange);
+}
+
+.new-item p {
+  color: var(--clr-grayish-blue);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+/* ==========================================================
+   Bottom Trending Cards (01, 02, 03)
+   ========================================================== */
+.trending-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+@media (min-width: 768px) {
+  .trending-section {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
+    margin-top: 4.5rem;
+  }
+}
+
+.card {
+  display: flex;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+.card-img {
+  width: 100px;
+  height: 130px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-number {
+  color: var(--clr-soft-red);
+  font-size: 2rem;
+  font-weight: var(--fw-bold);
+  line-height: 1;
+}
+
+.card-title a {
+  color: var(--clr-very-dark-blue);
+  font-size: 1.125rem;
+  font-weight: var(--fw-extra-bold);
+  line-height: 1.3;
+  transition: color 0.2s ease;
+}
+
+.card-title a:hover,
+.card-title a:focus-visible {
+  color: var(--clr-soft-red);
+}
+
+.card-desc {
+  color: var(--clr-dark-grayish-blue);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+/* ==========================================================
+   Footer Attribution
+   ========================================================== */
+.attribution {
+  margin-top: 5rem;
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--clr-dark-grayish-blue);
+}
+
+.attribution a {
+  color: var(--clr-very-dark-blue);
+  font-weight: var(--fw-bold);
+  text-decoration: underline;
+}
+
+.attribution a:hover {
+  color: var(--clr-soft-red);
+}
